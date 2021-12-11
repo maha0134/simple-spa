@@ -97,12 +97,17 @@ header form {
 #media {
   display: none;
 }
+#sort {
+  display: none;
+}
+
 #instructions.active,
 #actors.active,
 #media.active {
   display: block;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
+
 #instructions h2,
 #actors h2,
 #media h2 {
@@ -115,12 +120,29 @@ header form {
 
 #actors .content,
 #media .content {
-  margin: 0 0 0.5rem;
+  margin: 0 auto 0.5rem;
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: min(50em,100%);
+  max-width: min(60em,100%);
+}
+#sort.active {
+  display: flex;
+  padding: 1rem;
+  gap: 2rem;
+  justify-content: flex-end;
+  color: hsl(210, 80%, 10%);
+  margin: 0;
+}
+#sort ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+#sort a {
+  display: inline-block;
+  color: hsl(210, 80%, 10%);
 }
 .content p {
   padding: 0 1rem;
@@ -139,13 +161,14 @@ header form {
   border: hsl(210,80%, 20%) 2px solid;
   display: flex;
   width: 18rem;
-  /* margin:0.5rem; */
   box-shadow: 10px 10px 10px;
   transition: transform 0.2s,
   background-color 0.2s;
+  margin-bottom: 0.5rem;
 }
-.card:last-child {
-  margin-bottom: 1rem;
+.content a {
+  text-decoration: none;
+  color: inherit;
 }
 .card:hover,
 .card:focus {
@@ -156,6 +179,11 @@ header form {
   width: 6rem;
   border-right: solid 2px hsl(210,80%, 20%);
   display: flex;
+}
+.no-style {
+  text-decoration: none;
+  color: inherit;
+  align-self: flex-end;
 }
 
 .info-display {
@@ -233,7 +261,6 @@ header form {
 ************************/
 @media all and (min-width: 800px) {
   header {
-    /* font-size: 1.2rem; */
     flex-direction: row;
   }
   #search {
@@ -250,7 +277,7 @@ header form {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 0.5rem;
+    padding: 1rem 0 2rem;
   }
   #actors h2,
   #media h2 {
@@ -260,7 +287,19 @@ header form {
     writing-mode: vertical-lr;
     padding: 0;
   }
-  
+  .sort {
+    /* align-items: flex-end; */
+    padding-right: 0;
+    /* position: absolute; */
+
+    display: inline-flex;
+    flex-grow: 100%;
+    /* flex-wrap: nowrap; */
+    /* flex-direction: column; */
+  }
+  /* .sort h3 {
+    margin-right: auto;
+  } */
   #search {
     font-size: 1.5rem;
   }
