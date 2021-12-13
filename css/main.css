@@ -87,24 +87,45 @@ header form {
 /*******************
   content area
 *******************/
-
-#instructions {
-  display: none;
-}
-#actors {
-  display: none;
-}
-#media {
-  display: none;
-}
-#sort {
-  display: none;
+section {
+  transition: opacity 0.9s ease-in;
 }
 
-#instructions.active,
-#actors.active,
-#media.active {
-  display: block;
+.hidden {
+  position: absolute;
+  top:-1000rem;
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  top: 0;
+}
+.overlay {
+opacity: 1;
+padding:15rem 0;
+position: absolute;
+margin: 0 auto;
+z-index: 1000;
+width: 100%;
+background-color: rgba(0,0,0,0.8);
+color: white;
+font-size: 3rem;
+text-align: center;
+font-weight: bold;
+height: 100vh;
+}
+.overlay .dot-one,
+.overlay .dot-two,
+.overlay .dot-three {
+  opacity: 0;
+  animation: loading 0.5s 1;
+}
+
+#instructions.visible,
+#actors.visible,
+#media.visible {
+  opacity: 1;
   padding-bottom: 2rem;
 }
 
@@ -124,10 +145,11 @@ header form {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  padding: 1rem;
   justify-content: center;
   max-width: min(60em,100%);
 }
-#sort.active {
+#sort.visible {
   display: flex;
   padding: 1rem;
   gap: 2rem;
@@ -160,7 +182,7 @@ header form {
 .card {
   border: hsl(210,80%, 20%) 2px solid;
   display: flex;
-  width: 18rem;
+  width: min(100%,18rem);
   box-shadow: 10px 10px 10px;
   transition: transform 0.2s,
   background-color 0.2s;
@@ -255,6 +277,24 @@ header form {
     opacity: 1;
   }
 }
+@keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
 /************************
   Media Queries
@@ -266,18 +306,21 @@ header form {
   #search {
     max-width: 30vw;
   }
+  .card {
+    width: 18rem;
+  }
 }
 @media all and (min-width: 1100px) {
   header {
     font-size: 2rem;
   }
-  #actors.active,
-  #media.active {
+  #actors.visible,
+  #media.visible {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 1rem 0 2rem;
+    padding: 1rem 1rem;
   }
   #actors h2,
   #media h2 {
@@ -288,18 +331,11 @@ header form {
     padding: 0;
   }
   .sort {
-    /* align-items: flex-end; */
     padding-right: 0;
-    /* position: absolute; */
-
     display: inline-flex;
     flex-grow: 100%;
-    /* flex-wrap: nowrap; */
-    /* flex-direction: column; */
   }
-  /* .sort h3 {
-    margin-right: auto;
-  } */
+  
   #search {
     font-size: 1.5rem;
   }

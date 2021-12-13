@@ -19,14 +19,18 @@
       </form>
     </header>
     <main>
-      <div class="sort" id="sort">
+      <div class="hidden" id="sort">
         <h3>Sort By:</h3>
         <ul>
           <li><a href="#" id="name-sort">Name</a></li>
           <li><a href="#" id="popularity-sort">Popularity</a></li>
         </ul>
       </div>
-      <section id="instructions" class="active">
+      <p class="hidden" id="animation"><span class="dot-one">.</span>
+      <span class="dot-two">.</span>
+      <span class="dot-three">.</span>
+      Loading</p>
+      <section id="instructions" class="visible">
         <h2>How to Start</h2>
         <div class="content">
           <p>
@@ -43,17 +47,17 @@
           </p>
         </div>
       </section>
-      <section id="actors">
+      <section id="actors" class="hidden">
         
         <h2>Actors</h2>
         <div class="content" id="actor-content">
         </div>
       </section>
-      <section id="media">
+      <section id="media" class="hidden">
         <h2>Media</h2>
         <div class="content" id="media-content">
         </div>
-        <a href="#" class="no-style"><button class="btn" id="back-btn">Back</button></a>
+        <a href="#" class="no-style" id="back-btn"><button class="btn">Back</button></a>
       </section>
     </main>
     <footer class="foot">

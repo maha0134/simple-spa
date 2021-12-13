@@ -6,15 +6,19 @@ let  actors = document.getElementById("actors")
 let media = document.getElementById("media")
 let  sort = document.getElementById("sort")
 let searchBarContent=document.getElementById("search-bar")
+let animation=document.getElementById("animation")
+let btn = document.getElementById("back-btn")
 let baseImgUrl
-let nameSort
-let popularitySort
+let nameSort=document.getElementById("name-sort")
+let popularitySort=document.getElementById("popularity-sort")
 
 const APP = {
   init: () => {
     NAV.setPage(false)
-    window.addEventListener("popstate",NAV.setPage)
+    NAV.eventListeners()
+    
     let url = baseUrl + 'configuration' + apiKey
+    NAV.animate()
     fetch(url).then(response => {
       if(!response.ok) {
         throw new Error("Error", response.status,response.statusText)
@@ -45,6 +49,7 @@ const SEARCH = {
       ACTORS.display(retrievedData,query)
     } else {
         let searchUrl = baseUrl + 'search/person' + apiKey + '&query=' + query
+        NAV.animate()
         fetch(searchUrl).then(response => {
           if(!response.ok) {
             throw new Error("Error", response.status,response.statusText)
@@ -66,10 +71,6 @@ const SEARCH = {
 const ACTORS = {
   display: (data,query)=> {
     NAV.showPage(actors)
-    nameSort=document.getElementById("name-sort")
-    nameSort.addEventListener("click", ACTORS.sortName)
-    popularitySort=document.getElementById("popularity-sort")
-    popularitySort.addEventListener("click",ACTORS.sortPopularity)
     let content=document.getElementById('actor-content')
     content.innerHTML = ""          //to clear any existing fetch displayed
     data.results.forEach(element=> {
@@ -213,13 +214,6 @@ const MEDIA = {
       card.append(info)
       content.append(card)
     })
-    let btn = document.getElementById("back-btn")
-    btn.addEventListener('click', (ev)=> {
-      ev.preventDefault()
-      NAV.showPage(actors)
-      let goBack=location.hash.split("/")[0]
-      location.hash=goBack
-    })
   }
 };
 
@@ -235,8 +229,8 @@ const NAV = {
       } else if(!ev&&query) {   //when search is made on searchbar
         SEARCH.results(query)
         location.hash=query
-      } else {                  
-        if(location.hash.includes("/")) { //back or forward button
+      } else {
+        if(location.hash.includes("/")) { //back button
           NAV.showPage(media)
         }else {                           //if new query is typed in address bar
           let hash=location.hash.replace("#","")
@@ -245,18 +239,31 @@ const NAV = {
         }
       }
     },
-  
-    mediaPage: (elementId)=> {
+  mediaPage: (elementId)=> {
     location.hash+="/"+elementId
     document.title="TV Shows and Movies"
   },
   
   showPage: (target)=> {
-    document.querySelectorAll(".active").forEach(element=>element.classList.remove("active"))
+    document.querySelectorAll(".visible").forEach(element=>element.className="hidden")
     if(target===actors) {
-      sort.classList.add("active")
+      sort.className= "visible"
     }
-    target.classList.add("active")
+    target.className="visible"
+  },
+  animate: ()=> {
+    animation.className="overlay"
+  },
+  eventListeners: ()=> {
+    window.addEventListener("popstate",NAV.setPage)
+    document.addEventListener("animationend",()=> animation.className="hidden")
+    nameSort.addEventListener("click", ACTORS.sortName)
+    popularitySort.addEventListener("click",ACTORS.sortPopularity)
+    btn.addEventListener('click', (ev)=> {
+      ev.preventDefault()
+      NAV.showPage(actors)
+      history.back()
+    })
   }
 };
 
