@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600&family=Kaushan+Script&display=swap");
 *,
 *::before,
 *::after {
@@ -7,16 +6,21 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root {
+  --color-primary: #135c44;
+  --color-secondary: #a5debf;
+  --color-background: #aaddd0;
+  --color-secondary-dark: #8c3503;
+  --color-accent: #173111;
+}
 html {
-  font-family: Raleway, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 300;
-  font-size: 20px;
+  font-family: "Barlow", sans-serif;
+  font-size: 1.3rem;
   line-height: 1.5;
 }
 body {
   min-height: 100vh;
-  background-color: hsl(210, 20%, 80%);
+  background-color: var(--color-background);
   position: relative;
 }
 img {
@@ -28,60 +32,49 @@ img {
 *******************/
 
 header {
-  background-color: hsl(210, 60%, 50%);
-  color: rgb(0, 0, 0);
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  min-height: 15vh;
-  font-size: 1rem;
-  border-bottom: 0.5rem solid hsl(210, 80%, 20%);
+  font-size: 1.2rem;
+  border-bottom: 0.5rem solid var(--color-accent);
 }
-header h1,
-header form {
-  padding: 1rem;
-}
+
 header h1 {
-  text-shadow: 2px 2px 2px hsl(0, 0%, 100%);
+  padding: 1rem;
+  font-family: "Kaushan Script", cursive;
 }
 header form {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 1rem;
+  padding: 0 0.75rem 0.75rem;
+  position: relative;
 }
 #search {
-  font-size: 1rem;
-  line-height: 1;
-  padding: 0.25rem 1rem;
-  font-family: Raleway, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 300;
-  min-width: 20ch;
+  font-size: 1.3rem;
+  width: 100%;
+  padding: 0.25rem 0 0.25rem 0.75rem;
+  background-color: var(--color-background);
 }
+
 #btnSearch .iconic {
-  height: 22px;
-  width: 22px;
+  width: 2rem;
+  height: 100%;
+  padding: 0.25rem;
 }
 #btnSearch .iconic * {
-  stroke: hsl(210, 80%, 10%);
-  fill: hsl(210, 60%, 50%);
+  stroke: var(--color-accent);
+  fill: var(--color-accent);
 }
-#btnSearch.pulse {
-  animation-name: pulse;
-  animation-duration: 2s;
-  animation-timing-function: linear;
-  animation-delay: 0;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-fill-mode: backwards;
-}
+
 #btnSearch {
-  border-radius: 0.5rem;
-  margin-left: -2.2rem;
   border: none;
-  background-color: white;
+  position: absolute;
+  right: 1rem;
+  background-color: transparent;
 }
 
 /*******************
@@ -93,7 +86,7 @@ section {
 
 .hidden {
   position: absolute;
-  top:-1000rem;
+  top: -1000rem;
   opacity: 0;
 }
 
@@ -102,24 +95,24 @@ section {
   top: 0;
 }
 .overlay {
-opacity: 1;
-padding:15rem 0;
-position: absolute;
-margin: 0 auto;
-z-index: 1000;
-width: 100%;
-background-color: rgba(0,0,0,0.8);
-color: white;
-font-size: 3rem;
-text-align: center;
-font-weight: bold;
-height: 100vh;
+  opacity: 1;
+  padding: 15rem 0;
+  position: absolute;
+  margin: 0 auto;
+  z-index: 1000;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  height: 100vh;
 }
 .overlay .dot-one,
 .overlay .dot-two,
 .overlay .dot-three {
   opacity: 0;
-  animation: loading 0.5s 1;
+  animation: loading 0.5s 1.5;
 }
 
 #instructions.visible,
@@ -132,9 +125,9 @@ height: 100vh;
 #instructions h2,
 #actors h2,
 #media h2 {
-  font-weight: 500;
-  font-size: 3rem;
-  color: hsl(210, 80%, 30%);
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--color-accent);
   padding: 1rem;
   text-align: center;
 }
@@ -147,14 +140,14 @@ height: 100vh;
   flex-wrap: wrap;
   padding: 1rem;
   justify-content: center;
-  max-width: min(60em,100%);
+  max-width: min(45rem, 100%);
 }
 #sort.visible {
   display: flex;
   padding: 1rem;
   gap: 2rem;
   justify-content: flex-end;
-  color: hsl(210, 80%, 10%);
+  color: var(--color-accent);
   margin: 0;
 }
 #sort ul {
@@ -164,28 +157,28 @@ height: 100vh;
 }
 #sort a {
   display: inline-block;
-  color: hsl(210, 80%, 10%);
+  color: var(--color-accent);
 }
 .content p {
-  padding: 0 1rem;
-  color: hsl(210, 80%, 30%);
+  padding: 0 2rem;
+  color: var(--color-accent);
   margin: 1rem auto;
-  max-width: min(45em,100%);
+  max-width: min(60rem, 100%);
 }
 .title-text {
-  margin:0 auto;
+  margin: 0 auto;
   width: 100%;
   text-align: center;
   font-weight: bold;
   font-size: 1.3rem;
 }
 .card {
-  border: hsl(210,80%, 20%) 2px solid;
+  /* border: var(--color-primary) 2px solid; */
+  border-radius: 5px;
   display: flex;
-  width: min(100%,18rem);
-  box-shadow: 10px 10px 10px;
-  transition: transform 0.2s,
-  background-color 0.2s;
+  width: min(100%, 18rem);
+  box-shadow: 2.5px 2.5px 2.5px;
+  transition: transform 0.2s, background-color 0.2s;
   margin-bottom: 0.5rem;
 }
 .content a {
@@ -194,12 +187,12 @@ height: 100vh;
 }
 .card:hover,
 .card:focus {
-  transform: scale(1.1);
-  background-color: hsl(210, 80%, 70%);
+  transform: scale(1.075);
+  background-color: var(--color-secondary);
 }
 .img-wrap {
   width: 6rem;
-  border-right: solid 2px hsl(210,80%, 20%);
+  border-right: solid 2px hsl(210, 80%, 20%);
   display: flex;
 }
 .no-style {
@@ -228,10 +221,7 @@ height: 100vh;
   margin: 1rem auto;
   text-shadow: 0.5px 0.5px 0.5px hsl(0, 0%, 100%);
   box-shadow: 5px 5px 5px;
-  transition: transform 0.2s,
-  color 0.2s,
-  background-color 0.2s,
-  box-shadow 0.2s;
+  transition: transform 0.2s, color 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 
 .btn:hover,
@@ -244,39 +234,30 @@ height: 100vh;
 
 /* Footer Logo */
 .foot {
-  background-color: hsl(210, 60%, 50%);
+  background-color: var(--color-primary);
   width: 100%;
-  padding-right: 1rem;
   position: absolute;
   bottom: 0;
 }
 .footer-logo {
+  padding-right: 2rem;
   width: 100%;
+  max-width: 60rem;
   text-align: right;
+  margin: 0 auto;
   display: flex;
+  align-items: center;
   gap: 1rem;
   justify-content: flex-end;
 }
 .footer-logo svg {
   max-width: 3rem;
+  height: 2.5rem;
 }
 /***********************
   Effects
 ***********************/
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.64;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
+
 @keyframes loading {
   0% {
     opacity: 0;
@@ -300,12 +281,24 @@ height: 100vh;
   Media Queries
 ************************/
 @media all and (min-width: 800px) {
-  header {
-    flex-direction: row;
+  header .container-lg {
+    align-items: center;
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 60rem;
   }
-  #search {
-    max-width: 30vw;
+  header form {
+    padding: 0;
   }
+  header h1 {
+    padding: 0;
+  }
+  #btnSearch {
+    right: 0.75rem;
+  }
+
   .card {
     width: 18rem;
   }
@@ -313,6 +306,12 @@ height: 100vh;
 @media all and (min-width: 1100px) {
   header {
     font-size: 2rem;
+  }
+  #instructions h2 {
+    font-size: 2.5rem;
+  }
+  #instructions p {
+    font-size: 1.5rem;
   }
   #actors.visible,
   #media.visible {
@@ -335,7 +334,7 @@ height: 100vh;
     display: inline-flex;
     flex-grow: 100%;
   }
-  
+
   #search {
     font-size: 1.5rem;
   }
