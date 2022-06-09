@@ -10,7 +10,7 @@
   --color-primary: #135c44;
   --color-secondary: #a5debf;
   --color-background: #aaddd0;
-  --color-secondary-dark: #8c3503;
+  --color-secondary-dark: #81beaf;
   --color-accent: #173111;
 }
 html {
@@ -128,7 +128,7 @@ section {
   font-weight: 600;
   font-size: 2rem;
   color: var(--color-accent);
-  padding: 1rem;
+  padding-top: 1rem;
   text-align: center;
 }
 
@@ -144,11 +144,13 @@ section {
 }
 #sort.visible {
   display: flex;
-  padding: 1rem;
+  padding: 1rem 2rem;
   gap: 2rem;
   justify-content: flex-end;
   color: var(--color-accent);
   margin: 0;
+  width: 100%;
+  max-width: 60rem;
 }
 #sort ul {
   list-style: none;
@@ -159,21 +161,23 @@ section {
   display: inline-block;
   color: var(--color-accent);
 }
+
 .content p {
-  padding: 0 2rem;
+  padding: 0 0.75rem;
   color: var(--color-accent);
-  margin: 1rem auto;
-  max-width: min(60rem, 100%);
+  margin: 0.75rem auto;
 }
+
 .title-text {
   margin: 0 auto;
   width: 100%;
+  border: 0;
   text-align: center;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
+
 .card {
-  /* border: var(--color-primary) 2px solid; */
   border-radius: 5px;
   display: flex;
   width: min(100%, 18rem);
@@ -184,6 +188,7 @@ section {
 .content a {
   text-decoration: none;
   color: inherit;
+  display: flex;
 }
 .card:hover,
 .card:focus {
@@ -192,7 +197,7 @@ section {
 }
 .img-wrap {
   width: 6rem;
-  border-right: solid 2px hsl(210, 80%, 20%);
+  border-right: solid 2px var(--color-accent);
   display: flex;
 }
 .no-style {
@@ -210,16 +215,15 @@ section {
 
 .btn {
   display: block;
-  border: hsl(210, 80%, 20%) 2px solid;
+  border: var(--color-accent) 2px solid;
   border-radius: 5px;
   padding: 0.35em 0.75em;
-  color: rgb(0, 0, 0);
-  background-color: hsl(210, 70%, 50%);
+  color: var(--color-accent);
+  background-color: var(--color-);
   font-size: 1.2rem;
   font-weight: bold;
   align-self: flex-end;
-  margin: 1rem auto;
-  text-shadow: 0.5px 0.5px 0.5px hsl(0, 0%, 100%);
+  margin: 2rem auto;
   box-shadow: 5px 5px 5px;
   transition: transform 0.2s, color 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
@@ -227,8 +231,8 @@ section {
 .btn:hover,
 .btn:focus {
   transform: scale(1.1);
-  background-color: black;
-  color: white;
+  background-color: var(--color-accent);
+  color: var(--color-background);
   box-shadow: none;
 }
 
@@ -298,7 +302,10 @@ section {
   #btnSearch {
     right: 0.75rem;
   }
-
+  #instructions .content p {
+    padding: 0 2rem;
+    max-width: min(60rem, 100%);
+  }
   .card {
     width: 18rem;
   }
@@ -319,15 +326,15 @@ section {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 1rem 1rem;
+    padding: 0 1rem 1rem 0;
   }
   #actors h2,
   #media h2 {
     font-size: 9rem;
-    color: hsla(210, 80%, 50%, 0.32);
+    color: var(--color-secondary-dark);
     position: relative;
     writing-mode: vertical-lr;
-    padding: 0;
+    align-self: flex-start;
   }
   .sort {
     padding-right: 0;
