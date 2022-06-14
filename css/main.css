@@ -45,6 +45,7 @@ header {
 header h1 {
   padding: 1rem;
   font-family: "Kaushan Script", cursive;
+  cursor: pointer;
 }
 header form {
   display: flex;
