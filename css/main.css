@@ -22,6 +22,7 @@ body {
   min-height: 100vh;
   background-color: var(--color-background);
   position: relative;
+  /* overflow-x: hidden; */
 }
 img {
   max-width: 100%;
@@ -82,12 +83,12 @@ header form {
   content area
 *******************/
 section {
-  transition: opacity 0.9s ease-in;
+  transition: opacity 0.65s cubic-bezier(0.39, -0.27, 0.83, 1.07);
 }
 
 .hidden {
-  position: absolute;
   top: -1000rem;
+  position: absolute;
   opacity: 0;
 }
 
@@ -116,16 +117,15 @@ section {
   animation: loading 0.5s 1.5;
 }
 
-#instructions.visible,
-#actors.visible,
-#media.visible {
-  opacity: 1;
+#instructions .visible,
+#actors .visible,
+#media .visible {
   padding-bottom: 2rem;
 }
 
-#instructions h2,
-#actors h2,
-#media h2 {
+#instructions.visible h2,
+#actors.visible h2,
+#media.visible h2 {
   font-weight: 600;
   font-size: 2rem;
   color: var(--color-accent);
@@ -133,8 +133,8 @@ section {
   text-align: center;
 }
 
-#actors .content,
-#media .content {
+#actors.visible .content,
+#media.visible .content {
   margin: 0 auto 0.5rem;
   display: flex;
   gap: 1.5rem;
@@ -142,6 +142,10 @@ section {
   padding: 1rem;
   justify-content: center;
   max-width: min(45rem, 100%);
+}
+
+#sort {
+  transition: opacity 0.5s linear;
 }
 #sort.visible {
   display: flex;
@@ -331,8 +335,8 @@ section {
     align-items: flex-start;
     padding: 0 1rem 1rem 0;
   }
-  #actors h2,
-  #media h2 {
+  #actors.visible h2,
+  #media.visible h2 {
     font-size: 9rem;
     color: var(--color-secondary-dark);
     position: relative;
