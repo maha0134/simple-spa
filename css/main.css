@@ -148,7 +148,7 @@ section {
   gap: 2rem;
   justify-content: flex-end;
   color: var(--color-accent);
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
   max-width: 60rem;
 }
@@ -197,7 +197,8 @@ section {
 }
 .img-wrap {
   width: 6rem;
-  border-right: solid 2px var(--color-accent);
+  border: solid 2px var(--color-accent);
+  border-radius: 5px;
   display: flex;
 }
 .no-style {
@@ -231,6 +232,7 @@ section {
 .btn:hover,
 .btn:focus {
   transform: scale(1.1);
+  cursor: pointer;
   background-color: var(--color-accent);
   color: var(--color-background);
   box-shadow: none;
